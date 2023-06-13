@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+              <th>ID</th>
+              <th>Miniatura</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+              <th>Descuento</th>
+              <th>Calificación</th>
+              <th>Stock</th>
+              <th>Marca</th>
+              <th>Categoria</th>
+              <th [colSpan]="5">Imagenes</th>
+            </tr>
+    
+            <tr *ngIf="(product | objToArray) as producto">
+                <td>{{producto[0]}}</td>
+                <td><img src="{{producto[9]}}" alt="miniatura"></td>
+                <td>{{producto[1]}}</td>
+                <td>{{producto[2]}}</td>
+                <td>{{producto[3]}}</td>
+                <td>{{producto[4]}}</td>
+                <td>{{producto[5]}}</td>
+                <td>{{producto[6]}}</td>
+                <td>{{producto[7]}}</td>
+                <td>{{producto[8]}}</td>
+                <td><img *ngFor="let image of producto[10]" src="{{image}}"></td> 
+            </tr>
+        </table>
+
+        <button type="submit" (click)="delProduct()">Eliminar Producto</button>
+        <button type="submit" (click)="home()">Inicio</button>
+        
+        <div class="form"><div class="delete">
+                <div class="panel"><div class="group">
+                        <h2>{{delMessage}}</h2>
+                        <h2>Fecha: {{(product | objToArray)[12]}}</h2>
+        </div></div></div> </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir</title>
+</head>
+<body>
+    <div class="form">
+        <form [formGroup]="formAddProduct" class="panel">
+            <div class="group">
+                <label for="title">Nombre</label>
+                <input type="text" formControlName="title" ploaceholder="Nombre" required>
+            </div>
+            <div class="group">
+                <label for="description">Descripción</label>
+                <input type="text" formControlName="description" ploaceholder="Descripción" required>
+            </div>
+            <div class="group">
+                <label for="price">Precio</label>
+                <input type="number" formControlName="price" ploaceholder="Precio" required>
+            </div>
+            <div class="group">
+                <label for="discountPercentage">Descuento</label>
+                <input type="number" formControlName="discountPercentage" ploaceholder="Precio" required>
+            </div>
+            <div class="group">
+                <label for="rating">Calificación</label>
+                <input type="number" formControlName="rating" ploaceholder="Calificación" required>
+            </div>
+            <div class="group">
+                <label for="stock">Stock</label>
+                <input type="number" formControlName="stock" ploaceholder="Stock" required>
+            </div>
+            <div class="group">
+                <label for="brand">Marca</label>
+                <input type="text" formControlName="brand" ploaceholder="Marca" required>
+            </div>
+            <div class="group">
+                <label for="categ">Categoria</label>
+                <input type="text" formControlName="category" ploaceholder="Categoria" required>
+            </div>
+            <div class="group">
+                <label for="thumb">Miniatura</label>
+                <input type="text" formControlName="thumbnail" ploaceholder="Miniatura">
+            </div>
+            <div class="group">
+                <button type="submit" [disabled]="formAddProduct.invalid" (click)="addProduct()">Guardar</button>
+            </div>
+            <div class="group">
+                <button type="submit"(click)="home()">Inicio</button>
+            </div>
+        </form>
+    </div>
+
+    <table>
+        <tr>
+          <th>ID</th>
+          <th>Miniatura</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Descuento</th>
+          <th>Calificación</th>
+          <th>Stock</th>
+          <th>Marca</th>
+          <th>Categoria</th>
+        </tr>
+
+          <tr *ngIf="(addResult | objToArray) as result">
+            <td>{{result[0]}}</td>
+            <td><img src="{{result[5]}}" alt="miniatura"></td>
+            <td>{{result[1]}}</td>
+            <td>{{result[6]}}</td>
+            <td>{{result[2]}}</td>
+            <td>{{result[9]}}</td>
+            <td>{{result[4]}}</td>
+            <td>{{result[3]}}</td>
+            <td>{{result[7]}}</td>
+            <td>{{result[8]}}</td>
+          </tr>
+      </table>
+</body>
+</html>

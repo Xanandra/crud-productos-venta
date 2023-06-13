@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio</title>
+</head>
+<body>
+  <div class="form-search">
+    <form [formGroup]="formSearchName" class="search">
+      <input type="text" id="title" formControlName="title">
+      <button type="button" (click)="getProductsByName()">Buscar por Nombre</button>
+    </form>
+    <form [formGroup]="formSearchPrice" class="search">
+      <input type="number" id="price" formControlName="price">
+      <button type="button" (click)="getProductsByPrice()">Buscar por Precio</button>
+    </form>
+    <div class="search">
+      <button type="button" (click)="sortProductsByPrice()">Ordenar por Precio</button>
+      <button type="button" (click)="sortProductsByName()">Ordenar por Nombre</button>
+    </div>
+    <div class="search"><button type="button" (click)="addProduct()">Añadir</button></div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Editar</th>
+      <th>Eliminar</th>
+      <th>Id</th>
+      <th>Miniatura</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Descuento</th>
+      <th>Calificación</th>
+      <th>Stock</th>
+      <th>Marca</th>
+      <th>Categoria</th>
+    </tr>
+
+    <ng-container *ngIf="productos ">
+      <tr *ngFor="let producto of productos">
+        <td><button type="submit" (click)="updProduct(producto.id)">Editar</button></td>
+        <td><button type="submit" (click)="delProduct(producto.id)">Eliminar</button></td>
+        <td>{{producto.id}}</td>
+        <td><img src="{{producto.thumbnail}}" alt="miniatura"></td>
+        <td>{{producto.title}}</td>
+        <td>{{producto.description}}</td>
+        <td>{{producto.price}}</td>
+        <td>{{producto.discountPercentage}}</td>
+        <td>{{producto.rating}}</td>
+        <td>{{producto.stock}}</td>
+        <td>{{producto.brand}}</td>
+        <td>{{producto.category}}</td>
+      </tr>
+    </ng-container>
+
+  </table>
+
+</body>
+</html>
